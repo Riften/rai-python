@@ -20,6 +20,8 @@ add_definitions(
   -DRAI_BULLET #bullet
   )
 
+find_package(Bullet REQUIRED)
+
 include_directories(
   rai/rai
   /usr/include/eigen3
@@ -32,6 +34,8 @@ link_directories(
   #$ENV{HOME}/opt/physx3.4/lib
   #/opt/ros/kinetic/lib
   )
+
+# MESSAGE(STATUS "BULLET_INCLUDE_DIRS ${BULLET_INCLUDE_DIRS}")
 
 file(GLOB SRC_Core rai/rai/Core/*.cpp)
 file(GLOB SRC_Optim rai/rai/Optim/*.cpp)
@@ -90,4 +94,4 @@ target_link_libraries(libry PRIVATE
 add_executable(kinEdit rai/bin/src_kinEdit/main.cpp)
 target_link_libraries(kinEdit rai)
 
-
+add_subdirectory(playground)
